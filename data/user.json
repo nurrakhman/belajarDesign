@@ -13,6 +13,32 @@
         
     },
     {
+        "username": "student3",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
+        "role": "student",
+        "email": "student@mail.com"
+    },
+    {
+        "username": "student4",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
+        "role": "student",
+        "email": "student@mail.com"
+    }
+    ,
+    {
+        "username": "student5",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
+        "role": "student",
+        "email": "student@mail.com"
+    }
+    ,
+    {
+        "username": "student6",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
+        "role": "student",
+        "email": "student@mail.com"
+    },
+    {
         "username": "teacher",
         "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
         "role": "teacher",

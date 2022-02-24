@@ -18,10 +18,40 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   StudentProfile.init({
-    name: DataTypes.STRING,
+    name: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Name cannot be empty'
+        },
+        notNull:true
+      }
+    },
     age: DataTypes.INTEGER,
-    gender: DataTypes.STRING,
-    birthDate: DataTypes.DATE,
+    gender: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Gender cannot be empty'
+        },
+        notNull:true
+      }
+    },
+    birthDate: {
+      type:DataTypes.DATE,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Date cannot be empty'
+        },
+        notNull:true
+      }
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,

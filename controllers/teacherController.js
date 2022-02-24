@@ -1,8 +1,10 @@
 const time = require('../helpers/getFormattedTime.js')
+const getStaticGender = require('../helpers/getStaticGender');
 let {Category, Course, StudentProfile, User, UserCourse} = require('../models/index.js');
 class teacherController{
     static getCourseListbyTeacherId(req,res){
-        Course.findAll({where: { UserId:3 }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration'],order:[['name','ASC']]} )
+        let {id} =  req.session.userData
+        Course.findAll({where: { UserId:id }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration'],order:[['name','ASC']]} )
             .then((data) => {
                 // console.log(data);
                 // console.log(time);
@@ -19,10 +21,23 @@ class teacherController{
         //menampilkan detail asosiasi student course
         const {id} = req.params
         // console.log(id);
-        Course.findOne({where: { id }, include: [{model:User, as: "studentCourse"}]} )
+        Course.findOne({where: { id }, include: [{model:User, as: "studentCourse", include: [StudentProfile]}]} )
         .then((data) => {
-            // res.send(data)
-            res.render('courseDetailsTeacher',{data,time})
+            
+            let chart = {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: getStaticGender(data.studentCourse),
+                    backgroundColor: [
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 99, 132)',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+
+            res.render('courseDetailsTeacher',{data,time, chart})
         })
         .catch((err) => {
             res.send(err);
@@ -30,9 +45,14 @@ class teacherController{
     }
 
     static formAddCourse(req,res){
+        let {errors} = req.query
+        if(errors){
+            errors = errors.split(';')
+        }
         Category.findAll()
         .then(data=>{
-            res.render('addCourse',{data})
+            res.render('addCourse',{data,errors})
+            console.log(errors);
         })
         .catch((err) => {
             res.send(err);
@@ -48,11 +68,22 @@ class teacherController{
             res.redirect('/teachers/courses')
         })
         .catch((err) => {
-            res.send(err);
+            if(err.name === 'SequelizeValidationError'){
+                let errorList = err.errors.map((e) => {
+                    return e.message
+                })
+                res.redirect(`/teachers/courses/add?errors=${errorList.join(";")}`)
+            }else{
+                res.send(err);
+            }
         })
     }
 
     static formEditCourse(req,res){
+        let {errors} = req.query
+        if(errors){
+            errors = errors.split(';')
+        }
         const {id} = req.params
         let courseSelected
         Course.findOne({where:{id}})
@@ -62,7 +93,7 @@ class teacherController{
             return Category.findAll()
         })
         .then(category=>{
-            res.render('editCourse',{data:courseSelected,category})
+            res.render('editCourse',{data:courseSelected,category,errors})
         })
         .catch((err) => {
             res.send(err);
@@ -77,7 +108,22 @@ class teacherController{
             res.redirect('/teachers/courses')
         })
         .catch((err) => {
-            res.send(err);
+            if(err.name === 'SequelizeValidationError'){
+                let errorList = err.errors.map((e) => {
+                    return e.message
+                })
+                res.redirect(`/teachers/courses/${id}/edit?errors=${errorList.join(";")}`)
+            }else{
+                if(err.name === 'SequelizeValidationError'){
+                    let errorList = err.errors.map((e) => {
+                        return e.message
+                    })
+                    res.redirect(`/teachers/courses/add?errors=${errorList.join(";")}`)
+                }else{
+                    res.send(err);
+                }
+            }
+            
         })
         
     }

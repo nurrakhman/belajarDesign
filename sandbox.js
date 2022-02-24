@@ -58,11 +58,11 @@ let {Category, Course, StudentProfile, User, UserCourse} = require('./models');
 //         console.log(err);
 //     })
 
-// - Course cari teacher
-// Course.findOne({where: { id:1 }, include: [{model:User, as: "teacherCourse"}]} )
-//     .then((data) => {
-//         console.log(data);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
+//- Course cari teacher
+Course.findOne({where: { id:1 }, include: [{model:User, as: "teacherCourse"}]} )
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
