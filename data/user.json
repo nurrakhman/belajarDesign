@@ -1,20 +1,20 @@
 [
     {
         "username": "student1",
-        "password": "password",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
         "role": "student",
         "email": "student@mail.com"
     },
     {
         "username": "student2",
-        "password": "password",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
         "role": "student",
         "email": "student2@mail.com"
         
     },
     {
         "username": "teacher",
-        "password": "password",
+        "password": "$2a$10$RWJidLYrIRg2615/mj2/Ke/Q3vLYcfS0FdrujCqMMEeTS2oI40c7C",
         "role": "teacher",
         "email": "teacher@mail.com"
     }

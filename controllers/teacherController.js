@@ -30,6 +30,8 @@ class teacherController{
     }
 
     static formAddCourse(req,res){
+        let {id} =  req.session.userData
+        console.log({id})
         Category.findAll()
         .then(data=>{
             res.render('addCourse',{data})
@@ -41,8 +43,8 @@ class teacherController{
     }
 
     static handleAddCourse(req,res){
-        const {}
-        res.send('this is teacherController')
+        let {id} =  req.session.userData
+        res.send({id})
     }
 
     static formEditCourse(req,res){
