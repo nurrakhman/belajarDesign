@@ -1,38 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>belajarDesign</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
   </head>
-  <body>
-    <h2>Register Page</h2>
-    <form action="/register" method="post">
-      <label for="fusername">username:</label><br />
-      <input type="text" name="username" id="fusername" /><br />
-      <label for="fpassword">password:</label><br />
-      <input type="password" name="password" id="fpassword" /><br />
-      <label for="femail">email:</label><br />
-      <input type="email" name="email" id="femail" /><br />
-      <label for="fname">Name:</label><br />
-      <input type="text" name="name" id="fname" /><br />
-      <label for="fbd">Birth Date:</label><br />
-      <input type="date" name="birthDate" id="fbd" /><br />
-      <label for="fgender">Gender:</label><br />
-      <select name="gender" id="fgender">
-        <option value="male">Male</option>
-        <option value="female">Female</option></select
-      ><br />
-      <button type="submit">Sign In</button>
-    </form>
-    <br />
-    <% if (listError) { %>
-    <ul>
-      <% listError.forEach(e => { %>
-      <li><%= e %> </li>
-      <% }) %>
-    </ul>
-    <% } %>
+  <body style="background-color: darkorange">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+        <div
+          style="
+            background-color: white;
+            margin: 80px 80px;
+            padding: 30px 80px;
+            border-radius: 20px;
+          "
+        >
+          <h2 class="title">Register</h2>
+          <form action="/register" method="post">
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Text input"
+                  name="username"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Text input"
+                  name="password"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="email"
+                  placeholder="Text input"
+                  name="email"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Text input"
+                  name="name"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Birth Date</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="date"
+                  placeholder="Text input"
+                  name="birthDate"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Gender</label>
+              <div class="control">
+                <div class="select">
+                  <select name="gender" id="fgender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button class="button is-link" type="submit">Sign In</button>
+          </form>
+          <% if (listError) { %>
+          <ul>
+            <% listError.forEach(e => { %>
+            <li style="color: red"><%= e %></li>
+            <% }) %>
+          </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

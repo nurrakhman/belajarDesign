@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>belajarDesign</title>
-</head>
-<body>
-    <h2>Login Page</h2>
-    <form action="/login" method="post">
-        <label for="fusername">username:</label><br/>
-        <input type="text" name="username" id="fusername"><br/>
-        <label for="fpassword">password:</label><br/>
-        <input type="password" name="password" id="fpassword"><br/> 
-        <button type="submit">Sign In</button>
-    </form>
-    <% if (listError) { %>
-        <ul>
-          <% listError.forEach(e => { %>
-          <li><%= e %> </li>
-          <% }) %>
-        </ul>
-        <% } %>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body style="background-color:darkorange;">
+    <div style="display: flex; flex-direction: column; justify-content: center ; align-items: center; height: 100vh; padding: 30px;">
+        <div style="display: flex; align-items: center; justify-content: center;  height: 100%;">
+            <div style="background-color: white; margin: 80px 80px; padding: 80px 80px; border-radius: 20px;">
+                <h2 class="title">Login</h2>
+                <form action="/login" method="post">
+                  <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Text input"
+                        name="username"
+                      />
+                    </div>
+                  </div>
+          
+                  <div class="field">
+                      <label class="label">Password</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          type="password"
+                          placeholder="Text input"
+                          name="password"
+                        />
+                      </div>
+                    </div>
+                  <button class="button is-link" type="submit">Sign In</button>
+                </form>
+                <% if (listError) { %>
+                <ul>
+                  <% listError.forEach(e => { %>
+                  <li style="color: red;"><%= e %></li>
+                  <% }) %>
+                </ul>
+                <% } %>
+            </div>
+        </div>
+    </div>
+  </body>
 </html>

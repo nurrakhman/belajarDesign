@@ -1,34 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
   </head>
-  <body>
-    <H2>Detail User</H2>
-    <h4>Name: <%= studentData.StudentProfile.name %></h4>
-    <h4>Age: <%= studentData.StudentProfile.age %></h4>
-    <h4>Gender: <%= studentData.StudentProfile.gender %></h4>
-    <h4>Username: <%= studentData.username %></h4>
-    <h4>Email: <%= studentData.email %></h4>
-    <h2>My Courses:</h2>
-    <table border="1">
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Action</td>
-        </tr>
-        <% studentData.studentCourse.forEach(e => { %>
-            <tr>
-                <td><%= e.id %></td>
-                <td><%= e.name %></td>
-                <td>
-                    <a href="/students/courses/<%= e.id %>">Watch</a>
-                </td>
-            </tr>
-        <% }) %>
-    </table>
+  <body style="background-color: darkorange">
+    <nav class="navbar has-background-dark" >
+        <div class="container">
+            <div class="navbar-start">
+                <p class="navbar-item " href="/" style="font-weight: bolder; color: white;">BelajarDesign</p> <br />
+              </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-success" href="/students/home">Home</a> <br />
+                  <a class="button is-danger" href="/logout"">Logout</a> <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 10px;
+      "
+    >
+    
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+      <p class="title" style="color: whitesmoke;">-Profile Detail-</p>
+        <div
+          style="
+            background-color: white;
+            margin: 0px 80px;
+            padding: 30px 80px;
+            border-radius: 20px;
+          "
+        >
+        <h4><b>Name: </b><%= studentData.StudentProfile.name %></h4>
+        <h4><b>Age: </b><%= studentData.StudentProfile.age %></h4>
+        <h4><b>Gender: </b><%= studentData.StudentProfile.gender %></h4>
+        <h4><b>Username: </b><%= studentData.username %></h4>
+        <h4><b>Email: </b><%= studentData.email %></h4>
+        <h2 style="margin-top: 20px;"><b>My Courses:</b></h2>
+        <table class="table">
+          <tr>
+              <td>ID</td>
+              <td>Name</td>
+              <td>Action</td>
+          </tr>
+          <% studentData.studentCourse.forEach(e => { %>
+              <tr>
+                  <td><%= e.id %></td>
+                  <td><%= e.name %></td>
+                  <td>
+                      <a href="/students/courses/<%= e.id %>">Watch</a>
+                  </td>
+              </tr>
+          <% }) %>
+      </table>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+

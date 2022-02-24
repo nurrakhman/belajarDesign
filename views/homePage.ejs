@@ -1,41 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<form action="/students/home" method="get">
-    <input type="text" name="search" >
-    <input type="submit" value="Seacrh">
-</form>
-<body>
-    <a href="/students/profile/detail">Profile</a>
-    <a href="/logout">Logout</a>
-    <table border="1">
-        <tr>
-            <td>ID</td>
-            <td>Name</td>
-            <td>Descriptions</td>
-            <td>Duration</td>
-            <td>Action</td>
-        </tr>
-        <% courseData.forEach(e => { %>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body style="background-color: darkorange">
+    <nav class="navbar has-background-dark" >
+        <div class="container">
+            <div class="navbar-start">
+                <p class="navbar-item " href="/" style="font-weight: bolder; color: white;">BelajarDesign</p> <br />
+              </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-success" href="/students/profile/detail">Profile</a> <br />
+                  <a class="button is-danger" href="/logout"">Logout</a> <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+      <p class="title" style="color: whitesmoke;">-List Courses-</p>
+        <div
+          style="
+            background-color: white;
+            margin: 0px 30px;
+            padding: 30px 80px;
+            border-radius: 20px;
+          "
+        >
+          <form action="/students/home" method="get">
+              <div style="display: flex;">
+                <input class="input" type="search" placeholder="Search" name="search"/>
+                <button class="button is-link" type="submit" style="margin-left: 10px;">Search</button>
+              </div>
+          </form>
+          <table class="table">
             <tr>
-                <td><%= e.id %></td>
-                <td><%= e.name %></td>
-                <td><%= e.description %></td>
-                <td><%= getFormattedTime(e.duration) %></td>
-                <td>
-                    <% if (checkUserJoin(e.studentCourse, userData.id)) { %>
-                        <a href="/students/courses/<%= e.id %>">Watch</a>
-                    <% } else { %>
-                        <a href="/students/courses/<%= e.id %>/join">Join</a>
-                    <% }%>
-                </td>
+              <td>ID</td>
+              <td>Name</td>
+              <td>Descriptions</td>
+              <td>Duration</td>
+              <td>Action</td>
             </tr>
-        <% }) %>
-    </table>
-</body>
+            <% courseData.forEach(e => { %>
+            <tr>
+              <td><%= e.id %></td>
+              <td><%= e.name %></td>
+              <td><%= e.description %></td>
+              <td><%= getFormattedTime(e.duration) %></td>
+              <td>
+                <% if (checkUserJoin(e.studentCourse, userData.id)) { %>
+                <a style="width: 100px;" class="button is-danger" href="/students/courses/<%= e.id %>">Watch</a> <br />
+                <% } else { %>
+                <a style="width: 100px;" class="button is-primary" href="/students/courses/<%= e.id %>/join">Join</a> <br />
+                <% }%>
+              </td>
+            </tr>
+            <% }) %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,21 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
   </head>
-  <body>
-    <H2><%= courseData.name %></H2><br />
-    <iframe
-      width="420"
-      height="315"
-      src="<%= courseData.videoUrl %>"
+  <body style="background-color: darkorange">
+    <nav class="navbar has-background-dark" >
+        <div class="container">
+            <div class="navbar-start">
+                <p class="navbar-item " href="/" style="font-weight: bolder; color: white;">BelajarDesign</p> <br />
+              </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-success" href="/students/home">Home</a> <br />
+                  <a class="button is-danger" href="/logout"">Logout</a> <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 10px;
+      "
     >
-    </iframe><br/>
-    <p><%= `Created By: ${courseData.teacherCourse.username}` %></p>
-    <p><%= `Duration: ${getFormattedTime(courseData.duration)}` %></p>
-    <p><%= courseData.description %></p>
+    
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+      <p class="title" style="color: whitesmoke;">-Profile Detail-</p>
+        <div
+          style="
+            background-color: white;
+            margin: 0px 80px;
+            padding: 30px 80px;
+            border-radius: 20px;
+          "
+        >
+        <H2 class="title"><%= courseData.name %></H2><br />
+        <div style="display: flex; align-items: center; flex-direction: column;">
+          <iframe width="600" height="315" src="<%= courseData.videoUrl %>">
+          </iframe><br/>
+        </div>
+        <p><b>Created By: </b><%= `${courseData.teacherCourse.username}` %></p>
+        <p><b>Duration: </b><%= `${getFormattedTime(courseData.duration)}` %></p>
+        <b>Description: </b>
+        <p><%= courseData.description %></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
+

@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>belajarDesign</title>
-</head>
-<body>
-    <a href="/login">Login</a> <br/>
-    <a href="/register">Register</a> <br/>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BelajarDesign</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar" style="background-color: darkorange;">
+      <div class="container">
+        <div id="navMenu" class="navbar-menu" >
+          <div class="navbar-start">
+            <a class="navbar-item " href="/" style="font-weight: bolder; color: white;">BelajarDesign</a> <br />
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-success" href="/login">Login</a> <br />
+                <a class="button is-danger" href="/register">Register</a> <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero is-link is-fullheight-with-navbar">
+      <div class="hero-body" style="background-color:orange;">
+        <p class="title" style="font-size: 100px">BelajarDesign</p>
+        <p class="title" style="color: whitesmoke;">"-Belajar Design online bareng teacher² gokil"</p>
+      </div>
+    </section>
+  </body>
 </html>

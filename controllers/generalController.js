@@ -67,7 +67,7 @@ class generalController{
             return StudentProfile.create({name, birthDate, gender, UserId: user.id})
         })
         .then(()=>{
-            res.redirect("/students/home")
+            res.redirect("/login")
         })
         .catch((err) => {
             if (err.name === "SequelizeValidationError") {
