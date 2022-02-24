@@ -3,7 +3,8 @@ const getStaticGender = require('../helpers/getStaticGender');
 let {Category, Course, StudentProfile, User, UserCourse} = require('../models/index.js');
 class teacherController{
     static getCourseListbyTeacherId(req,res){
-        Course.findAll({where: { UserId:3 }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration'],order:[['name','ASC']]} )
+        let {id} =  req.session.userData
+        Course.findAll({where: { UserId:id }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration'],order:[['name','ASC']]} )
             .then((data) => {
                 // console.log(data);
                 // console.log(time);
