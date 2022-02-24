@@ -23,16 +23,58 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     //validasi username,email,password,userName tidak boleh spasi,
     //password tidak boleh spasi
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING,
-    email: DataTypes.STRING
-  }, {
+    username: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true,
+        isSpace(value){
+          for(let i=0 ; i < value.length ;i++){
+            if(value[i] === ' '){
+              throw new Error('Space in username ar not allowed');
+            }
+          }
+        }
+      }
+    },
+    password: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true,
+        isSpace(value){
+          for(let i=0 ; i < value.length ;i++){
+            if(value[i] === ' '){
+              throw new Error('Space in username ar not allowed');
+            }
+          }
+        }
+    },
+    role: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    },
+    email: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    }
+  }
+}, {
     sequelize,
     modelName: 'User',
   });
 
-  User.beforeValidate((user, options) => {
+  User.beforeCreate((user, options) => {
     let pass = user.password;
     let salt = bcrypt.genSaltSync(10);
     pass = bcrypt.hashSync(pass, salt);

@@ -19,13 +19,41 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Course.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    duration: DataTypes.INTEGER,
-    videoUrl: DataTypes.STRING
+    name: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    },
+    description: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    },
+    duration: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:true
+      }
+    },
+    videoUrl: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Course',
   });
   return Course;
 };
+

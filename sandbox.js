@@ -20,7 +20,7 @@
 // npx sequelize-cli seed:generate --name add-userCourse
 
 // -- Test Sequelize RelationShip
-let {Category, Course, StudentProfile, User, UserCourse} = require('./models');
+// let {Category, Course, StudentProfile, User, UserCourse} = require('./models');
 // - Get StudentProfile
 
 // User.findAll({where: { role:"student" }, include: StudentProfile} )
