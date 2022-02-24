@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="/teachers/courses/add">Add Course</a></button>
+    <table border="1">
+        <tr>
+            <td>No</td>
+            <td>Name</td>
+            <td>Duration</td>
+            <td>Category</td>
+        </tr>
+        <% data.forEach((e,i)=>{ %>
+            <tr>
+                <td><%= i+1 %> </td>
+                <td><%= e.name %> </td>
+                <td><%=  time(e.duration)%> </td>
+                <td><%= e.Category.name %> </td>
+                <td><button><a href="/teachers/courses/<%= e.id %>">Details</a></button></td>
+                <td><button><a href="/teachers/courses/<%= e.id %>/edit">Edit</a></button></td>
+                <td><button><a href="/teachers/courses/<%= e.id %>/delete">Delete</a></button></td>
+            </tr>
+       <% }) %> 
+    </table>
+</body>
+</html>
