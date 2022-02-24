@@ -1,10 +1,9 @@
 // -- Models
 // npx sequelize-cli model:generate --name User --attributes username:string,password:string,role:string,email:string
 // npx sequelize-cli model:generate --name StudentProfile --attributes name:string,age:integer,gender:string
-// npx sequelize-cli model:generate --name StudentProfile --attributes name:string,age:integer,gender:string
 // npx sequelize-cli model:generate --name Category --attributes name:string 
 // npx sequelize-cli model:generate --name Course --attributes name:string,description:string,duration:integer,videoUrl:string
-// npx sequelize-cli model:generate --name UserCourse  
+// npx sequelize-cli model:generate --name UserCourse  --attributes StudentId:integer,CourseId:integer
 
 // -- Migration
 // npx sequelize-cli migration:generate --name add-UserId-in-StudentsProfile
