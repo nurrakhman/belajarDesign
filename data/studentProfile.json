@@ -3,12 +3,14 @@
         "name": "student1 name",
         "age": 25,
         "gender": "male",
-        "UserId": 1
+        "UserId": 1,
+        "birthDate": "1998-03-25"
     },
     {
         "name": "student2 name",
         "age": 21,
         "gender": "female",
-        "UserId": 2
+        "UserId": 2,
+        "birthDate": "1998-10-25"
     }
 ]
