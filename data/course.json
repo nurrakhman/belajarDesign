@@ -5,7 +5,7 @@
         "duration": 677,
         "videoUrl": "https://www.youtube.com/embed/iXrSgd2VT8c",
         "CategoryId": 1,
-        "UserId": 3
+        "UserId": 7
     },
     {
         "name": "Tutorial Membuat Logo Clothing - Tipografi - CorelDraw X7",
@@ -13,6 +13,23 @@
         "duration": 706,
         "videoUrl": "https://www.youtube.com/embed/iXrSgd2VT8c",
         "CategoryId": 2,
-        "UserId": 3
+        "UserId": 7
+    },
+    {
+        "name": "Belajar Membuat Gambar Emoji Di Adobe illustrator",
+        "description": "Selamat Datang di Channel Youtube Mas Aji.Silahkan Like, Komen dan Subscribe untuk menonton video-video tutorial selanjutnya.Terimakasih",
+        "duration": 1187,
+        "videoUrl": "https://www.youtube.com/embed/D5OxdmJUnA0",
+        "CategoryId": 4,
+        "UserId": 7
+    },
+    {
+        "name": "Belajar Membuat Gambar Emoji Di Adobe illustrator",
+        "description": "Selamat Datang di Channel Youtube Mas Aji.Silahkan Like, Komen dan Subscribe untuk menonton video-video tutorial selanjutnya.Terimakasih",
+        "duration": 1187,
+        "videoUrl": "https://www.youtube.com/embed/D5OxdmJUnA0",
+        "CategoryId": 4,
+        "UserId": 7
     }
+    
 ]

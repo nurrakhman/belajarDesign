@@ -19,10 +19,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Course.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    duration: DataTypes.INTEGER,
-    videoUrl: DataTypes.STRING
+    name: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Name cannot be empty'
+        },
+        notNull:true
+      }
+    },
+    description: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Description cannot be empty'
+        },
+        notNull:true
+      }
+    },
+    duration: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:true,
+        min :{
+          args:[1],
+          msg:'Duration of video at least 1 second'
+        },
+        isInt:{
+          args:true,
+          msg:'Duration cannot be empt'
+        }
+      }
+    },
+    videoUrl: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'Video Url cannot be empty'
+        },
+        notNull:true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Course',
