@@ -1,4 +1,5 @@
 const time = require('../helpers/getFormattedTime.js')
+const getStaticGender = require('../helpers/getStaticGender');
 let {Category, Course, StudentProfile, User, UserCourse} = require('../models/index.js');
 class teacherController{
     static getCourseListbyTeacherId(req,res){
@@ -19,10 +20,23 @@ class teacherController{
         //menampilkan detail asosiasi student course
         const {id} = req.params
         // console.log(id);
-        Course.findOne({where: { id }, include: [{model:User, as: "studentCourse"}]} )
+        Course.findOne({where: { id }, include: [{model:User, as: "studentCourse", include: [StudentProfile]}]} )
         .then((data) => {
-            // res.send(data)
-            res.render('courseDetailsTeacher',{data,time})
+            
+            let chart = {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: getStaticGender(data.studentCourse),
+                    backgroundColor: [
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 99, 132)',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+
+            res.render('courseDetailsTeacher',{data,time, chart})
         })
         .catch((err) => {
             res.send(err);
