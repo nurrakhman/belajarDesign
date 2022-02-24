@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Name cannot be empty'
+        },
         notNull:true
       }
     },
@@ -31,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Description cannot be empty'
+        },
         notNull:true
       }
     },
@@ -39,15 +45,25 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull:false,
       validate:{
-        notEmpty:true,
-        notNull:true
+        notNull:true,
+        min :{
+          args:[1],
+          msg:'Duration of video at least 1 second'
+        },
+        isInt:{
+          args:true,
+          msg:'Duration cannot be empt'
+        }
       }
     },
     videoUrl: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Video Url cannot be empty'
+        },
         notNull:true
       }
     }
