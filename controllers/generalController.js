@@ -82,7 +82,13 @@ class generalController{
     }   
     
     static handleLogout(req,res){
-        res.send('this is generalController')
+        req.session.destroy((err) => {
+            if(err){
+                res.send(err)
+            }else{
+                res.redirect('/');
+            }
+        })
     }   
 }
 

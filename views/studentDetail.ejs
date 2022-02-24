@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <H2>Detail User</H2>
+    <h4>Name: <%= studentData.StudentProfile.name %></h4>
+    <h4>Age: <%= studentData.StudentProfile.age %></h4>
+    <h4>Gender: <%= studentData.StudentProfile.gender %></h4>
+    <h4>Username: <%= studentData.username %></h4>
+    <h4>Email: <%= studentData.email %></h4>
+    <h2>My Courses:</h2>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Action</td>
+        </tr>
+        <% studentData.studentCourse.forEach(e => { %>
+            <tr>
+                <td><%= e.id %></td>
+                <td><%= e.name %></td>
+                <td>
+                    <a href="/students/courses/<%= e.id %>">Watch</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+  </body>
+</html>
