@@ -16,11 +16,13 @@
   "production": {
     "use_env_variable": "postgres://ngmycicvmwydwo:644115f4cfec49fd78b02d823642a5de552d9806cddc8dd56c490c56b8f4ca5d@ec2-35-175-17-88.compute-1.amazonaws.com:5432/d9e273b94ujj25",
     "ssl": true,
-    "protocol": "postgress",
-    "dialect": "postgress",
+    "protocol": "postgres",
+    "dialect": "postgres",
     "dialectOptions": {
-      "require": true,
-      "rejectUnauthorized": false
+      "ssl":{
+        "require": true,
+        "rejectUnauthorized": false
+      }
     }
   }
 }
