@@ -9,8 +9,8 @@
 // npx sequelize-cli migration:generate --name add-UserId-in-StudentsProfile
 // npx sequelize-cli migration:generate --name add-UserId-in-Course 
 // npx sequelize-cli migration:generate --name add-CategoryId-in-Course 
-// npx sequelize-cli migration:generate --name add-StudentId-in-UserCourse 
-// npx sequelize-cli migration:generate --name add-CourseId-in-UserCourse 
+// npx sequelize-cli migration:generate --name update-CourseId-in-UserCourse 
+// npx sequelize-cli migration:generate --name update-StudentId-in-UserCourse 
 
 // -- Seeds
 // npx sequelize-cli seed:generate --name add-user
