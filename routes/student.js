@@ -1,19 +1,17 @@
 const express = require('express')
-const Controller = require('../controllers/controller.js')
+const studentController = require('../controllers/studentController.js')
 const router = express.Router()
+router.get('/home',studentController.getHomePage)
 
+router.get('/courses/:id',studentController.getStudentCourse)
 
-router.get('/home')
+router.get('/courses/:id/join',studentController.joinStudentCourses)
 
-router.get('/courses/:id')
+router.get('/profile/detail',studentController.getStudentProfile)
 
-router.get('/courses/:id/join')
+router.get('/profile/edit',studentController.formEditStudentProfile)
 
-router.get('/profile/detail')
-
-router.get('/profile/edit')
-
-router.post('/profile/edit')
+router.post('/profile/edit',studentController.handleEditStudentProfile)
 
 
 module.exports = router

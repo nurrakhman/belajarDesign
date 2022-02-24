@@ -1,17 +1,17 @@
 const express = require('express')
-const Controller = require('../controllers/controller.js')
+const teacherController = require('../controllers/teacherController.js')
 const router = express.Router()
 
-router.get('/course')
+router.get('/courses',teacherController.getCourseListbyTeacherId)//list course khusus teacher
 
-router.get('/course/:id')
+router.get('/courses/:id',teacherController.showCourseDetail) 
 
-router.get('/course/add')
-router.post('/course/add')
+router.get('/courses/add',teacherController.formAddCourse)
+router.post('/courses/add')
 
-router.get('/course/:id/edit')
-router.post('/course/:id/edit')
+router.get('/courses/:id/edit',teacherController.handleAddCourse)
+router.post('/courses/:id/edit',teacherController.formEditCourse)
 
-router.get('/course/:id/delete')
+router.get('/courses/:id/delete',teacherController.handleEditCourse)
 
 module.exports = router

@@ -1,17 +1,22 @@
 const express = require('express')
-const Controller = require('../controllers/controller.js')
+const generalController = require('../controllers/generalController.js')
 const router = express.Router()
-const login = require('./login.js')
-const register = require('./register.js')
 const student = require('./student.js')
 const teacher = require('./teacher.js')
 
 
-router.get('/',/**Controller.home */)
-router.use('/login',login)
-router.use('/register',register)
-router.use('/student',student)
-router.use('/teacher',teacher)
+router.get('/',generalController.getLandingPage)
+
+router.get('/login',generalController.formLogin)
+router.post('/login',generalController.handleLogin)
+
+router.get('/register',generalController.formRegister)
+router.post('/register',generalController.handleRegister)
+
+router.get('/logout',generalController.handleLogout)
+
+router.use('/students',student)
+router.use('/teachers',teacher)
 
 
 module.exports =router
