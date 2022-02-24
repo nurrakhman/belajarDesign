@@ -16,14 +16,14 @@
     {
         "name": "student3 name",
         "age": 21,
-        "gender": "female",
+        "gender": "male",
         "UserId": 3,
         "birthDate": "1998-10-25"
     },
     {
         "name": "student4 name",
         "age": 21,
-        "gender": "female",
+        "gender": "male",
         "UserId": 4,
         "birthDate": "1998-10-25"
     },
@@ -37,7 +37,7 @@
     {
         "name": "student6 name",
         "age": 21,
-        "gender": "female",
+        "gender": "male",
         "UserId": 6,
         "birthDate": "1998-10-25"
     }
