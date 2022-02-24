@@ -28,7 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       unique: true,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Username cannot be empty'
+        },
         notNull:true,
         isSpace(value){
           for(let i=0 ; i < value.length ;i++){
@@ -43,7 +46,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Password cannot be empty'
+        },
         notNull:true,
         isSpace(value){
           for(let i=0 ; i < value.length ;i++){
@@ -59,7 +65,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
-        notEmpty:true,
+        notEmpty:{
+          args:true,
+          msg:'Email cannot be empty'
+        },
         notNull:true
       }
     }
