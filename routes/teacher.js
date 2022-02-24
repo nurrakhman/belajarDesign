@@ -7,7 +7,7 @@ router.get('/courses',teacherController.getCourseListbyTeacherId)//list course k
 router.get('/courses/:id',teacherController.showCourseDetail) 
 
 router.get('/courses/add',teacherController.formAddCourse)
-router.post('/courses/add')
+router.post('/courses/add',teacherController.handleAddCourse)
 
 router.get('/courses/:id/edit',teacherController.handleAddCourse)
 router.post('/courses/:id/edit',teacherController.formEditCourse)
