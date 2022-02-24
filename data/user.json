@@ -10,6 +10,7 @@
         "password": "password",
         "role": "student",
         "email": "student2@mail.com"
+        
     },
     {
         "username": "teacher",

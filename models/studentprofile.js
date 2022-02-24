@@ -17,8 +17,14 @@ module.exports = (sequelize, DataTypes) => {
   StudentProfile.init({
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    gender: DataTypes.STRING
+    gender: DataTypes.STRING,
+    birthDate: DataTypes.DATE
   }, {
+    hooks:{
+      beforeValidate:(data,opt)=>{
+        //data.age = year(now) - year(date of birth)
+      }
+    },
     sequelize,
     modelName: 'StudentProfile',
   });
