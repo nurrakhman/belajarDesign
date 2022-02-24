@@ -1,0 +1,14 @@
+[
+    {
+        "name": "student1 name",
+        "age": 25,
+        "gender": "male",
+        "UserId": 1
+    },
+    {
+        "name": "student2 name",
+        "age": 21,
+        "gender": "female",
+        "UserId": 2
+    }
+]
