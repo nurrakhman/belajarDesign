@@ -25,5 +25,13 @@
     <input type="submit" value="Add New Course">
 
 </form>
+
+<% if (errors) { %>
+    <ul>
+      <% errors.forEach(e => { %>
+      <li><%= e %> </li>
+      <% }) %>
+    </ul>
+    <% } %>
 </body>
 </html>

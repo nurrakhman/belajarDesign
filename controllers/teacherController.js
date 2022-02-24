@@ -30,9 +30,14 @@ class teacherController{
     }
 
     static formAddCourse(req,res){
+        let {errors} = req.query
+        if(errors){
+            errors = errors.split(';')
+        }
         Category.findAll()
         .then(data=>{
-            res.render('addCourse',{data})
+            res.render('addCourse',{data,errors})
+            console.log(errors);
         })
         .catch((err) => {
             res.send(err);
@@ -48,11 +53,22 @@ class teacherController{
             res.redirect('/teachers/courses')
         })
         .catch((err) => {
-            res.send(err);
+            if(err.name === 'SequelizeValidationError'){
+                let errorList = err.errors.map((e) => {
+                    return e.message
+                })
+                res.redirect(`/teachers/courses/add?errors=${errorList.join(";")}`)
+            }else{
+                res.send(err);
+            }
         })
     }
 
     static formEditCourse(req,res){
+        let {errors} = req.query
+        if(errors){
+            errors = errors.split(';')
+        }
         const {id} = req.params
         let courseSelected
         Course.findOne({where:{id}})
@@ -62,7 +78,7 @@ class teacherController{
             return Category.findAll()
         })
         .then(category=>{
-            res.render('editCourse',{data:courseSelected,category})
+            res.render('editCourse',{data:courseSelected,category,errors})
         })
         .catch((err) => {
             res.send(err);
@@ -77,7 +93,22 @@ class teacherController{
             res.redirect('/teachers/courses')
         })
         .catch((err) => {
-            res.send(err);
+            if(err.name === 'SequelizeValidationError'){
+                let errorList = err.errors.map((e) => {
+                    return e.message
+                })
+                res.redirect(`/teachers/courses/${id}/edit?errors=${errorList.join(";")}`)
+            }else{
+                if(err.name === 'SequelizeValidationError'){
+                    let errorList = err.errors.map((e) => {
+                        return e.message
+                    })
+                    res.redirect(`/teachers/courses/add?errors=${errorList.join(";")}`)
+                }else{
+                    res.send(err);
+                }
+            }
+            
         })
         
     }
