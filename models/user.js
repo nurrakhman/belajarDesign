@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
+    //validasi username,email,password,userName tidak boleh spasi,
+    //password tidak boleh spasi
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     role: DataTypes.STRING,
