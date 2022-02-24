@@ -19,3 +19,41 @@
 // npx sequelize-cli seed:generate --name add-course
 // npx sequelize-cli seed:generate --name add-userCourse
 
+// -- Test Sequelize RelationShip
+let {Category, Course, StudentProfile, User, UserCourse} = require('./models');
+// - Get StudentProfile
+
+// User.findAll({where: { role:"student" }, include: StudentProfile} )
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
+
+// - Get StudentCourse
+User.findOne({where: { id:1 }, include: [{model:Course}]} )
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+// - Get Course owner
+// Course.findOne({where: { id:1 }, include: User} )
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
+
+// - Get Category Course
+Category.findOne({where: { id:1 }, include: Course} )
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
