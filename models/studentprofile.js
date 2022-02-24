@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const getAge = require('../helpers/getAge');
 module.exports = (sequelize, DataTypes) => {
   class StudentProfile extends Model {
     /**
@@ -11,22 +12,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      StudentProfile.belongsTo(models.User, {foreignKey: "UserId"});
+      StudentProfile.belongsTo(models.User, {
+        foreignKey: "UserId"
+      });
     }
   }
   StudentProfile.init({
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
     gender: DataTypes.STRING,
-    birthDate: DataTypes.DATE
+    birthDate: DataTypes.DATE,
+    UserId: DataTypes.INTEGER
   }, {
-    hooks:{
-      beforeValidate:(data,opt)=>{
-        //data.age = year(now) - year(date of birth)
-      }
-    },
     sequelize,
     modelName: 'StudentProfile',
   });
+
+  StudentProfile.beforeValidate((sp, options) => {
+    let age = getAge(sp.birthDate)
+    sp.age = age;
+  })
+
   return StudentProfile;
 };

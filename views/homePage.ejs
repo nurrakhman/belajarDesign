@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/students/profile/detail">Profile</a>
+    <a href="/logout">Logout</a>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Descriptions</td>
+            <td>Duration</td>
+            <td>Action</td>
+        </tr>
+        <% courseData.forEach(e => { %>
+            <tr>
+                <td><%= e.id %></td>
+                <td><%= e.name %></td>
+                <td><%= e.description %></td>
+                <td><%= getFormattedTime(e.duration) %></td>
+                <td>
+                    <% if (checkUserJoin(e.studentCourse, userData.id)) { %>
+                        <a href="/students/courses/<%= e.id %>">Watch</a>
+                    <% } else { %>
+                        <a href="/students/courses/<%= e.id %>/join">Join</a>
+                    <% }%>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
