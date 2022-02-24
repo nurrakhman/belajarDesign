@@ -1,6 +1,7 @@
 class studentController{
     static getHomePage(req,res){
-        res.send('this is studentController')
+        let {username, id, role} =  req.session.userData
+        res.send({username, id, role})
     }
 
     static getStudentCourse(req,res){

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>belajarDesign</title>
+</head>
+<body>
+    <h2>Login Page</h2>
+    <form action="/login" method="post">
+        <label for="fusername">username:</label><br/>
+        <input type="text" name="username" id="fusername"><br/>
+        <label for="fpassword">password:</label><br/>
+        <input type="password" name="password" id="fpassword"><br/> 
+        <button type="submit">Sign In</button>
+    </form>
+    <% if (listError) { %>
+        <ul>
+          <% listError.forEach(e => { %>
+          <li><%= e %> </li>
+          <% }) %>
+        </ul>
+        <% } %>
+</body>
+</html>
