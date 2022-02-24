@@ -2,7 +2,7 @@ const time = require('../helpers/getFormattedTime.js')
 let {Category, Course, StudentProfile, User, UserCourse} = require('../models/index.js');
 class teacherController{
     static getCourseListbyTeacherId(req,res){
-        Course.findAll({where: { UserId:3 }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration']} )
+        Course.findAll({where: { UserId:3 }, include: [{model:User, as: "teacherCourse"},{model:Category,attributes:['name']}] ,attributes:['id','name','duration'],order:[['name','ASC']]} )
             .then((data) => {
                 // console.log(data);
                 // console.log(time);
@@ -30,8 +30,6 @@ class teacherController{
     }
 
     static formAddCourse(req,res){
-        let {id} =  req.session.userData
-        console.log({id})
         Category.findAll()
         .then(data=>{
             res.render('addCourse',{data})
@@ -44,15 +42,55 @@ class teacherController{
 
     static handleAddCourse(req,res){
         let {id} =  req.session.userData
-        res.send({id})
+        const{name,videoUrl,CategoryId,duration,description} = req.body
+        Course.create({name,videoUrl,CategoryId,duration,UserId:id,description})
+        .then(()=>{
+            res.redirect('/teachers/courses')
+        })
+        .catch((err) => {
+            res.send(err);
+        })
     }
 
     static formEditCourse(req,res){
-        res.send('this is teacherController')
+        const {id} = req.params
+        let courseSelected
+        Course.findOne({where:{id}})
+        .then(data=>{
+            // res.render('editCourse',{data})
+            courseSelected = data
+            return Category.findAll()
+        })
+        .then(category=>{
+            res.render('editCourse',{data:courseSelected,category})
+        })
+        .catch((err) => {
+            res.send(err);
+        })
     }
 
     static handleEditCourse(req,res){
-        res.send('this is teacherController')
+        const {id} = req.params
+        const{name,videoUrl,CategoryId,duration,description} = req.body
+        Course.update({name,videoUrl,CategoryId,duration,description},{where:{id}})
+        .then(()=>{
+            res.redirect('/teachers/courses')
+        })
+        .catch((err) => {
+            res.send(err);
+        })
+        
+    }
+
+    static handleDeleteCourse(req,res){
+        const {id} = req.params
+        Course.destroy({where:{id}})
+        .then(()=>{
+            res.redirect('/teachers/courses')
+        })
+        .catch((err) => {
+            res.send(err);
+        })
     }
 
 }

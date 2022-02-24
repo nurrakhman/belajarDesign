@@ -9,9 +9,9 @@ router.get('/courses/add' ,isTeacher, teacherController.formAddCourse)
 router.post('/courses/add' ,isTeacher, teacherController.handleAddCourse)
 router.get('/courses/:id' ,isTeacher, teacherController.showCourseDetail) 
 
-router.get('/courses/:id/edit' ,isTeacher, teacherController.handleAddCourse)
-router.post('/courses/:id/edit' ,isTeacher, teacherController.formEditCourse)
+router.get('/courses/:id/edit' ,isTeacher, teacherController.formEditCourse)
+router.post('/courses/:id/edit' ,isTeacher, teacherController.handleEditCourse)
 
-router.get('/courses/:id/delete' ,isTeacher, teacherController.handleEditCourse)
+router.get('/courses/:id/delete' ,isTeacher, teacherController.handleDeleteCourse)
 
 module.exports = router

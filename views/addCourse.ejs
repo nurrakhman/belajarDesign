@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="/teachers/courses/add" method="post">
     <div>name</div>
     <input type="text" name="name"><br>
     <div>Description</div>
@@ -16,10 +17,13 @@
     <div>Video Url</div>
     <input type="text" name="videoUrl">
     <div>Category</div>
-    <select name="category" >
+    <select name="CategoryId" >
         <% data.forEach(e=>{ %>
             <option value="<%= e.id%>"><%= e.name %></option>
        <% }) %> 
-    </select>
+    </select><br>
+    <input type="submit" value="Add New Course">
+
+</form>
 </body>
 </html>
