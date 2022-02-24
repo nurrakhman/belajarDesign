@@ -20,7 +20,7 @@ function getFormattedTime(sec) {
             time += minutes + ':'
         }
     } else {
-        time += '00:00' + ':'
+        time += '00' + ':'
     }
 
     let seconds = sec % 3600
