@@ -74,7 +74,7 @@ class generalController{
                 let errorList = err.errors.map((e) => {
                     return e.message
                 })
-                res.redirect(`/students/home?error=${errorList.join(";")}`)
+                res.redirect(`/register?error=${errorList.join(";")}`)
             } else {
                 res.send(err)
             }

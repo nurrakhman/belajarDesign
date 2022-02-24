@@ -23,10 +23,45 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     //validasi username,email,password,userName tidak boleh spasi,
     //password tidak boleh spasi
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
+    username: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true,
+        isSpace(value){
+          for(let i=0 ; i < value.length ;i++){
+            if(value[i] === ' '){
+              throw new Error('Space in username ar not allowed');
+            }
+          }
+        }
+      }
+    },
+    password: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true,
+        isSpace(value){
+          for(let i=0 ; i < value.length ;i++){
+            if(value[i] === ' '){
+              throw new Error('Space in password ar not allowed');
+            }
+          }
+        }
+      }
+    },
     role: DataTypes.STRING,
-    email: DataTypes.STRING
+    email:  {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:true,
+        notNull:true
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',

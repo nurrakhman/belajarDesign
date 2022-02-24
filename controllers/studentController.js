@@ -1,10 +1,15 @@
 const {Course, User, UserCourse, StudentProfile} = require('../models');
 const checkUserJoin = require('../helpers/checkUserJoin');
 const getFormattedTime = require('../helpers/getFormattedTime');
+const { Op } = require("sequelize");
 class studentController{
     static getHomePage(req,res){
         let userData =  req.session.userData
-        Course.findAll({include: [{model:User, as: "studentCourse"}]})
+        let option = {}
+        if(req.query.search){
+            option = {name:{[Op.iLike]:`%${req.query.search}%`}}
+        }
+        Course.findAll({include: [{model:User, as: "studentCourse"}],where:option})
         .then((courseData) => {
             //res.send({courseData})
             res.render("homePage",{courseData, checkUserJoin, userData, getFormattedTime})
