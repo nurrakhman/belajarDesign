@@ -32,13 +32,13 @@ let {Category, Course, StudentProfile, User, UserCourse} = require('./models');
 //     })
 
 // - Get StudentCourse
-User.findOne({where: { id:1 }, include: [{model:Course}]} )
-    .then((data) => {
-        console.log(data);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+// User.findOne({where: { id:3 }, include: [{model:Course, as: "Course"}]} )
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
 
 // - Get Course owner
 // Course.findOne({where: { id:1 }, include: User} )
@@ -50,10 +50,19 @@ User.findOne({where: { id:1 }, include: [{model:Course}]} )
 //     })
 
 // - Get Category Course
-Category.findOne({where: { id:1 }, include: Course} )
-    .then((data) => {
-        console.log(data);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+// Category.findOne({where: { id:1 }, include: Course} )
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
+
+// - Course cari teacher
+// Course.findOne({where: { id:1 }, include: [{model:User, as: "teacherCourse"}]} )
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
